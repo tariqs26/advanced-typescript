@@ -12,15 +12,25 @@ export type Omit<
   [Key in keyof T as Key extends Remove ? never : Key]: T[Key]
 }
 
-// Example usage
-
-type User = {
-  id: number
-  name: string
+type Events = {
+  click: MouseEvent
+  mousedown: MouseEvent
+  keydown: KeyboardEvent
 }
 
-type UserId = Pick<User, "id">
+type On<T extends object> = {
+  [Key in keyof T as Key extends string ? `on${Capitalize<Key>}` : never]?: (
+    e: T[Key]
+  ) => void
+}
 
-type UserWithoutName = Omit<User, "name">
-
-type UserWithoutNameOrId = Omit<User, "id" | "name">
+const actions: On<Events> = {
+  onClick: (e) => {
+    e.clientX
+    // ...
+  },
+  onKeydown: (e) => {
+    e.key
+    // ...
+  },
+}
