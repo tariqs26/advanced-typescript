@@ -1,4 +1,8 @@
-# Advanced Typescript
+# Advanced TypeScript
+
+Collection of advanced [TypeScript](https://www.typescriptlang.org/) examples.
+
+## Installation
 
 To install dependencies:
 
@@ -6,4 +10,8 @@ To install dependencies:
 bun install
 ```
 
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This project was initialized with `bun init` using Bun v1.1.21.
+
+## Contributing
+
+Contributions are welcome, if you have any examples or improvements, feel free create an issue or open a pull request.
