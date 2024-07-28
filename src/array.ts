@@ -14,8 +14,16 @@ type Join<T extends JoinValue[], Sep extends string> = T extends [infer First]
   ? `${First}${Sep}${Second}${Sep}${Join<Rest, Sep>}`
   : ""
 
+type Filter<T extends unknown[], P> = T extends [infer First, ...infer Rest]
+  ? First extends P
+    ? [First, ...Filter<Rest, P>]
+    : Filter<Rest, P>
+  : []
+
 // Example usage
 
 type ConcatTest = Concat<string[], number[]> // (string | number)[]
 
-type TestJoin = Join<[1, 2, 3], "."> // "1.2.3"
+type JoinTest = Join<[1, 2, 3], "."> // "1.2.3"
+
+type FilterTest = Filter<[1, 2, ""], number> // [1, 2]
