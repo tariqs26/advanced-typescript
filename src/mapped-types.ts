@@ -12,6 +12,10 @@ export type Omit<
   [Key in keyof T as Key extends Remove ? never : Key]: T[Key]
 }
 
+export type Partial<T extends Record<PropertyKey, unknown>> = {
+  [Key in keyof T]?: T[Key]
+}
+
 type Events = {
   click: MouseEvent
   mousedown: MouseEvent
@@ -33,4 +37,10 @@ const actions: On<Events> = {
     e.key
     // ...
   },
+}
+
+export type Merge<F, S> = {
+  [Key in keyof F | keyof S]: Key extends keyof S
+    ? S[Key]
+    : F[Key extends keyof F ? Key : never]
 }
