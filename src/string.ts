@@ -34,10 +34,12 @@ export type ReplaceAll<
   ? `${Before}${To}${ReplaceAll<`${After}`, From, To>}`
   : Str
 
+export type Autocomplete<Str extends string> = Str | (string & {})
+
 // Example usage
 
-type ApiPrefix = Prefix<`api${number}`>
-const api1: ApiPrefix = "api1..."
+type ApiPrefix = Prefix<`api/v${number}/`>
+const api1: ApiPrefix = "api/v1/..."
 // const api2: ApiPrefix = "api" // Error
 
 type ConcatTest = Concat<"Hello", "World"> // "HelloWorld"
