@@ -34,7 +34,7 @@ export type ReplaceAll<
   ? `${Before}${To}${ReplaceAll<`${After}`, From, To>}`
   : Str
 
-export type Autocomplete<Str extends string> = Str | (string & {})
+export type Autocomplete<Options extends string> = Options | (string & {})
 
 // Example usage
 
@@ -51,3 +51,5 @@ type TestTrim = Trim<" user  "> // "user"
 type RemoveVersion<Str extends string> = Replace<Str, `V${number}`, "">
 
 type UserWithoutVersion = RemoveVersion<"userV1"> // "user"
+
+function selectLanguage(options: Autocomplete<"ts" | "js" | "py">) {}
