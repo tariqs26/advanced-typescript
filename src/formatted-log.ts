@@ -4,7 +4,7 @@ type FormatSpecifiers = { [key in "d" | "i"]: number } & { s: string } & {
 
 type ExtractFormatSpecifiers<
   Str,
-  Args extends any[] = []
+  Args extends unknown[] = []
 > = Str extends `${infer _}%${infer Specifier}${infer Rest}`
   ? Specifier extends keyof FormatSpecifiers
     ? ExtractFormatSpecifiers<Rest, [...Args, FormatSpecifiers[Specifier]]>
