@@ -1,8 +1,18 @@
-type Concat<T extends unknown[], V extends unknown[]> = [...T, ...V]
+export type Head<T extends unknown[]> = T extends [infer First, ...infer _]
+  ? First
+  : never
 
-type JoinValue = string | number | bigint | boolean | null | undefined
+export type Tail<T extends unknown[]> = T extends [...infer _, infer Last]
+  ? Last
+  : never
 
-type Join<T extends JoinValue[], Sep extends string> = T extends [infer First]
+export type Concat<T extends unknown[], V extends unknown[]> = [...T, ...V]
+
+export type JoinValue = string | number | bigint | boolean | null | undefined
+
+export type Join<T extends JoinValue[], Sep extends string> = T extends [
+  infer First
+]
   ? First
   : T extends [infer First extends JoinValue, infer Second extends JoinValue]
   ? `${First}${Sep}${Second}`
@@ -14,13 +24,20 @@ type Join<T extends JoinValue[], Sep extends string> = T extends [infer First]
   ? `${First}${Sep}${Second}${Sep}${Join<Rest, Sep>}`
   : ""
 
-type Filter<T extends unknown[], P> = T extends [infer First, ...infer Rest]
+export type Filter<T extends unknown[], P> = T extends [
+  infer First,
+  ...infer Rest
+]
   ? First extends P
     ? [First, ...Filter<Rest, P>]
     : Filter<Rest, P>
   : []
 
 // Example usage
+
+type HeadTest = Head<[number, boolean]> // number
+
+type TailTest = Tail<[string, boolean, bigint]> // bigint
 
 type ConcatTest = Concat<string[], number[]> // (string | number)[]
 
