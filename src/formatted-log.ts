@@ -30,5 +30,6 @@ declare var console: Omit<Console, "log"> & {
   ) => void
 }
 
-// console.log("Hello %s", 1) // error
+// @ts-expect-error: type mismatch, expected string rather than number
+console.log("Hello %s", 10)
 console.log("Hello %s %d", "world", 20) // ok

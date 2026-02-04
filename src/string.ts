@@ -40,7 +40,8 @@ export type Autocomplete<Options extends string> = Options | (string & {})
 
 type ApiPrefix = Prefix<`api/v${number}/`>
 const api1: ApiPrefix = "api/v1/..."
-// const api2: ApiPrefix = "api" // Error
+// @ts-expect-error: expected to start with "api/v{number}/"
+const api2: ApiPrefix = "api"
 
 type ConcatTest = Concat<"Hello", "World"> // "HelloWorld"
 
