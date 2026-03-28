@@ -2,6 +2,15 @@
 
 Collection of advanced [TypeScript](https://www.typescriptlang.org/) examples.
 
+## Concepts
+
+- Mapped types
+- `infer` keyword
+- `const` generics
+- `asserts` functions
+- Branded types
+- Template literal types
+
 ## Installation
 
 To install dependencies:
